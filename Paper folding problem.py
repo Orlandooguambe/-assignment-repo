@@ -32,7 +32,7 @@ for _ in range(n_folds):
 elapsed_time_loop = time.time() - start
 print("For loop time (time): {:.8f} seconds".format(elapsed_time_loop))
 
-# [Problem 4 extra] Comparison with %%timeit (works only in Jupyter/Colab)
+# [Problem 4 extra] Comparison with %%timeit 
 print("\n--- Timing with %%timeit (Jupyter magic) ---")
 # In a notebook, run the following lines separately:
 # %%timeit -n 1000
