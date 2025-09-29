@@ -19,20 +19,29 @@ for _ in range(n_folds):
 
 print("Thickness: {:.2f} kilometers".format(folded_thickness / 1000))
 
-
-# [Problem 4] Comparison of calculation time
+# [Problem 4] Comparison of calculation time (using time)
 start = time.time()
 folded_thickness_exp = THICKNESS * (2 ** n_folds)
 elapsed_time_exp = time.time() - start
-print("Exponentiation time: {:.8f} seconds".format(elapsed_time_exp))
+print("Exponentiation time (time): {:.8f} seconds".format(elapsed_time_exp))
 
-# Using a for loop
 start = time.time()
 folded_thickness_loop = THICKNESS
 for _ in range(n_folds):
     folded_thickness_loop *= 2
 elapsed_time_loop = time.time() - start
-print("For loop time: {:.8f} seconds".format(elapsed_time_loop))
+print("For loop time (time): {:.8f} seconds".format(elapsed_time_loop))
+
+# [Problem 4 extra] Comparison with %%timeit (works only in Jupyter/Colab)
+print("\n--- Timing with %%timeit (Jupyter magic) ---")
+# In a notebook, run the following lines separately:
+# %%timeit -n 1000
+# THICKNESS * (2 ** n_folds)
+#
+# %%timeit -n 1000
+# folded_thickness = THICKNESS
+# for _ in range(n_folds):
+#     folded_thickness *= 2
 
 # [Problem 5] Saving to a list
 thickness_list = [THICKNESS]
@@ -49,9 +58,8 @@ plt.ylabel("Thickness (meters)")
 plt.plot(thickness_list)
 plt.show()
 
-
 # [Problem 7] Customizing graphs
-plt.figure(figsize=(10, 6))  # Adjust size
+plt.figure(figsize=(10, 6))  
 plt.title("Thickness of Folded Paper", fontsize=16)
 plt.xlabel("Number of Folds", fontsize=14)
 plt.ylabel("Thickness (meters)", fontsize=14)
